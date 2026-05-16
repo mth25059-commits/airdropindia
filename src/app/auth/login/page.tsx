@@ -13,9 +13,10 @@ export const metadata: Metadata = {
 export default function LoginPage({
   searchParams,
 }: {
-  searchParams: { redirect?: string };
+  searchParams: { redirect?: string; error?: string };
 }) {
-  const redirectTo = searchParams.redirect ?? "/tax";
+  const redirectTo = searchParams.redirect ?? "/";
+  const oauthError = searchParams.error;
 
   return (
     <div className="container py-16 sm:py-24">
@@ -29,6 +30,13 @@ export default function LoginPage({
         <p className="mt-2 text-sm text-zinc-400">
           Sign in to save tax calculations and get airdrop alerts.
         </p>
+
+        {oauthError && (
+          <p className="mt-4 rounded-lg bg-rose-500/10 px-4 py-2 text-xs text-rose-400">
+            Login failed. Make sure Google OAuth is configured in your Supabase
+            dashboard (Authentication → Providers → Google).
+          </p>
+        )}
 
         <div className="mt-6">
           <LoginButtons redirectTo={redirectTo} />

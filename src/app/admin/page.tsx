@@ -7,6 +7,7 @@ import { isCurrentUserAdmin, getAdminEmails } from "@/lib/admin";
 import { createClient } from "@/lib/supabase/server";
 import { isSupabaseConfigured } from "@/lib/supabase/admin";
 import { AdminAirdropForm } from "./AdminAirdropForm";
+import { AdminBlogForm } from "./AdminBlogForm";
 import type { AirdropRow, SubscriberRow } from "@/lib/supabase/types";
 
 export const metadata: Metadata = {
@@ -124,6 +125,18 @@ export default async function AdminPage() {
               </li>
             ))}
           </ul>
+        </GlassCard>
+      </section>
+
+      <section className="mt-6">
+        <GlassCard className="p-6">
+          <h2 className="text-lg font-semibold">Create a blog post</h2>
+          <p className="mt-1 text-xs text-zinc-500">
+            Write a standalone blog post (Markdown). Published immediately.
+          </p>
+          <div className="mt-4">
+            <AdminBlogForm />
+          </div>
         </GlassCard>
       </section>
 
