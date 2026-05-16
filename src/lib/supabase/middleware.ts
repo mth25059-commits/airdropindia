@@ -4,6 +4,7 @@ import type { Database } from "./types";
 
 const PUBLIC_PATHS = [
   "/auth/login",
+  "/auth/signup",
   "/auth/callback",
   "/auth/signout",
   "/api/",
