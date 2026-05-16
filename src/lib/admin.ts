@@ -1,3 +1,4 @@
+import { timingSafeEqual } from "crypto";
 import { createClient } from "@/lib/supabase/server";
 
 export async function getCurrentUser() {
@@ -27,5 +28,9 @@ export function verifyCronSecret(authHeader: string | null): boolean {
   if (!secret) return false;
   if (!authHeader) return false;
   const token = authHeader.replace(/^Bearer\s+/i, "").trim();
-  return token === secret;
+  // Constant-time comparison to avoid timing side-channels.
+  const a = Buffer.from(token);
+  const b = Buffer.from(secret);
+  if (a.length !== b.length) return false;
+  return timingSafeEqual(a, b);
 }

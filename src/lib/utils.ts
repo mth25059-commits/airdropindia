@@ -1,3 +1,4 @@
+import { randomBytes } from "crypto";
 import { clsx, type ClassValue } from "clsx";
 import { twMerge } from "tailwind-merge";
 
@@ -75,13 +76,10 @@ export function safeJsonParse<T>(input: string | null | undefined, fallback: T):
   }
 }
 
+// Cryptographically secure random hex token. Used for subscriber
+// confirm / unsubscribe links — must NOT be guessable.
 export function randomToken(length = 32): string {
-  const chars = "abcdefghijklmnopqrstuvwxyz0123456789";
-  let out = "";
-  for (let i = 0; i < length; i++) {
-    out += chars[Math.floor(Math.random() * chars.length)];
-  }
-  return out;
+  return randomBytes(length).toString("hex").slice(0, length);
 }
 
 export function getSiteUrl(): string {
