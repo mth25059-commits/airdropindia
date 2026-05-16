@@ -1,101 +1,251 @@
-import Image from "next/image";
+import Link from "next/link";
+import {
+  ArrowRight,
+  Calculator,
+  Coins,
+  Lock,
+  Mail,
+  Search,
+  Sparkles,
+  TrendingUp,
+  Zap,
+} from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { Badge } from "@/components/ui/badge";
+import { GlassCard } from "@/components/shared/GlassCard";
+import { ScrollFade } from "@/components/shared/ScrollFade";
+import { SITE } from "@/lib/site";
 
-export default function Home() {
+const features = [
+  {
+    icon: Coins,
+    title: "Curated airdrops",
+    desc: "Only legit, India-friendly airdrops. Filter by chain, difficulty, and reward size.",
+  },
+  {
+    icon: Search,
+    title: "Step-by-step guides",
+    desc: "Every airdrop has a no-fluff claim guide. AI-written, human-reviewed.",
+  },
+  {
+    icon: Calculator,
+    title: "Indian tax calculator",
+    desc: "30% + 4% cess + 1% TDS — auto-computed. Save reports as PDF.",
+  },
+  {
+    icon: Mail,
+    title: "Email alerts",
+    desc: "Get notified when fresh airdrops drop. Pick your chains. Unsubscribe anytime.",
+  },
+  {
+    icon: TrendingUp,
+    title: "Track history",
+    desc: "Save every calculation in your dashboard. Export at year-end for your CA.",
+  },
+  {
+    icon: Lock,
+    title: "Private & free",
+    desc: "Google login optional. Calculator works without signup. Always free.",
+  },
+];
+
+const stats = [
+  { label: "Active airdrops", value: "20+" },
+  { label: "Chains tracked", value: "7" },
+  { label: "Tax rules coded", value: "115BBH + 194S" },
+  { label: "Cost to you", value: "₹0" },
+];
+
+export default function HomePage() {
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="https://nextjs.org/icons/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
+    <>
+      {/* HERO */}
+      <section className="relative">
+        <div className="container pt-16 pb-12 sm:pt-24 sm:pb-20">
+          <div className="mx-auto max-w-3xl text-center">
+            <ScrollFade>
+              <Badge variant="brand" className="inline-flex">
+                <Sparkles className="h-3 w-3" /> Built for Indian crypto users
+              </Badge>
+            </ScrollFade>
+            <ScrollFade delay={0.05}>
+              <h1 className="mt-5 text-balance text-4xl font-semibold tracking-tight sm:text-5xl md:text-6xl">
+                Free crypto airdrops.{" "}
+                <span className="gradient-text">Indian crypto tax.</span>
+                <br />
+                One clean dashboard.
+              </h1>
+            </ScrollFade>
+            <ScrollFade delay={0.1}>
+              <p className="mx-auto mt-5 max-w-2xl text-balance text-base text-zinc-400 sm:text-lg">
+                {SITE.description}
+              </p>
+            </ScrollFade>
+            <ScrollFade delay={0.15}>
+              <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
+                <Button asChild size="lg">
+                  <Link href="/airdrops">
+                    Browse airdrops <ArrowRight className="h-4 w-4" />
+                  </Link>
+                </Button>
+                <Button asChild size="lg" variant="secondary">
+                  <Link href="/tax">
+                    <Calculator className="h-4 w-4" /> Calculate my tax
+                  </Link>
+                </Button>
+              </div>
+            </ScrollFade>
+            <ScrollFade delay={0.2}>
+              <p className="mt-4 text-xs text-zinc-500">
+                No signup required. Calculator runs in your browser.
+              </p>
+            </ScrollFade>
+          </div>
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="https://nextjs.org/icons/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+          {/* Stats strip */}
+          <ScrollFade delay={0.25}>
+            <div className="mx-auto mt-16 grid max-w-3xl grid-cols-2 gap-4 sm:grid-cols-4">
+              {stats.map((s) => (
+                <GlassCard key={s.label} className="px-4 py-5 text-center">
+                  <div className="text-xl font-semibold tracking-tight sm:text-2xl">
+                    {s.value}
+                  </div>
+                  <div className="mt-1 text-xs text-zinc-400">{s.label}</div>
+                </GlassCard>
+              ))}
+            </div>
+          </ScrollFade>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
+      </section>
+
+      {/* PRODUCT CARDS */}
+      <section className="container py-16">
+        <div className="grid gap-6 md:grid-cols-2">
+          <ScrollFade>
+            <GlassCard className="h-full p-6 sm:p-8">
+              <Badge variant="brand">
+                <Coins className="h-3 w-3" /> AirdropIndia
+              </Badge>
+              <h2 className="mt-4 text-2xl font-semibold tracking-tight sm:text-3xl">
+                Find airdrops worth your time.
+              </h2>
+              <p className="mt-3 text-sm text-zinc-400 sm:text-base">
+                Active airdrops on Ethereum, Solana, BNB, Polygon, Arbitrum &
+                Base. Search, filter, and follow the step-by-step claim guide.
+              </p>
+              <ul className="mt-5 space-y-2 text-sm text-zinc-300">
+                <li className="flex items-center gap-2">
+                  <Zap className="h-4 w-4 text-brand-glow" />
+                  Filters: chain · difficulty · reward size · deadline
+                </li>
+                <li className="flex items-center gap-2">
+                  <Zap className="h-4 w-4 text-brand-glow" />
+                  Email alerts when new drops appear
+                </li>
+                <li className="flex items-center gap-2">
+                  <Zap className="h-4 w-4 text-brand-glow" />
+                  Safety guide on every airdrop page
+                </li>
+              </ul>
+              <div className="mt-6">
+                <Button asChild>
+                  <Link href="/airdrops">
+                    Open the tracker <ArrowRight className="h-4 w-4" />
+                  </Link>
+                </Button>
+              </div>
+            </GlassCard>
+          </ScrollFade>
+
+          <ScrollFade delay={0.05}>
+            <GlassCard className="h-full p-6 sm:p-8">
+              <Badge variant="brand">
+                <Calculator className="h-3 w-3" /> CryptoTaxIndia
+              </Badge>
+              <h2 className="mt-4 text-2xl font-semibold tracking-tight sm:text-3xl">
+                Calculate your 30% + 1% TDS — in seconds.
+              </h2>
+              <p className="mt-3 text-sm text-zinc-400 sm:text-base">
+                Section 115BBH & 194S coded exactly. 4% cess, optional
+                surcharge, AI explanation, downloadable PDF.
+              </p>
+              <ul className="mt-5 space-y-2 text-sm text-zinc-300">
+                <li className="flex items-center gap-2">
+                  <Zap className="h-4 w-4 text-brand-glow" />
+                  30% flat + 4% cess (= 31.2%) auto-applied
+                </li>
+                <li className="flex items-center gap-2">
+                  <Zap className="h-4 w-4 text-brand-glow" />
+                  1% TDS threshold checks (₹10k / ₹50k)
+                </li>
+                <li className="flex items-center gap-2">
+                  <Zap className="h-4 w-4 text-brand-glow" />
+                  Save to dashboard · download PDF · AI explainer
+                </li>
+              </ul>
+              <div className="mt-6">
+                <Button asChild>
+                  <Link href="/tax">
+                    Open the calculator <ArrowRight className="h-4 w-4" />
+                  </Link>
+                </Button>
+              </div>
+            </GlassCard>
+          </ScrollFade>
+        </div>
+      </section>
+
+      {/* FEATURES GRID */}
+      <section className="container py-16">
+        <ScrollFade>
+          <div className="mx-auto max-w-2xl text-center">
+            <h2 className="text-3xl font-semibold tracking-tight sm:text-4xl">
+              Everything you need.{" "}
+              <span className="gradient-text">Nothing you don&apos;t.</span>
+            </h2>
+            <p className="mt-3 text-zinc-400">
+              No ads, no popups, no upsell. We make money later — for now we
+              just want this to be the best Indian crypto tool on the web.
+            </p>
+          </div>
+        </ScrollFade>
+        <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          {features.map((f, i) => (
+            <ScrollFade key={f.title} delay={i * 0.04}>
+              <GlassCard className="h-full p-6">
+                <div className="inline-flex h-10 w-10 items-center justify-center rounded-xl bg-brand-gradient-soft text-brand-glow ring-1 ring-brand-purple/20">
+                  <f.icon className="h-5 w-5" />
+                </div>
+                <h3 className="mt-4 text-base font-semibold">{f.title}</h3>
+                <p className="mt-2 text-sm text-zinc-400">{f.desc}</p>
+              </GlassCard>
+            </ScrollFade>
+          ))}
+        </div>
+      </section>
+
+      {/* CTA */}
+      <section className="container pb-24 pt-10">
+        <ScrollFade>
+          <GlassCard intensity="strong" className="overflow-hidden p-8 text-center sm:p-12">
+            <div className="absolute inset-0 -z-10 opacity-50 [background:radial-gradient(60%_60%_at_50%_0%,rgba(139,92,246,0.25),transparent_70%)]" />
+            <h2 className="text-2xl font-semibold tracking-tight sm:text-3xl">
+              Start with whichever feels easier.
+            </h2>
+            <p className="mx-auto mt-3 max-w-xl text-sm text-zinc-400 sm:text-base">
+              Browse active airdrops or run a tax calculation in 10 seconds.
+            </p>
+            <div className="mt-6 flex flex-wrap items-center justify-center gap-3">
+              <Button asChild size="lg">
+                <Link href="/airdrops">Browse airdrops</Link>
+              </Button>
+              <Button asChild size="lg" variant="secondary">
+                <Link href="/tax">Tax calculator</Link>
+              </Button>
+            </div>
+          </GlassCard>
+        </ScrollFade>
+      </section>
+    </>
   );
 }

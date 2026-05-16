@@ -1,0 +1,51 @@
+import type { Metadata } from "next";
+import Link from "next/link";
+import { Sparkles } from "lucide-react";
+import { LoginButtons } from "./LoginButtons";
+import { GlassCard } from "@/components/shared/GlassCard";
+
+export const metadata: Metadata = {
+  title: "Login",
+  description: "Sign in to save your tax calculations.",
+  robots: { index: false, follow: false },
+};
+
+export default function LoginPage({
+  searchParams,
+}: {
+  searchParams: { redirect?: string };
+}) {
+  const redirectTo = searchParams.redirect ?? "/tax";
+
+  return (
+    <div className="container py-16 sm:py-24">
+      <GlassCard intensity="strong" className="mx-auto max-w-md p-8 text-center">
+        <span className="mx-auto inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-brand-gradient shadow-glow">
+          <Sparkles className="h-6 w-6 text-white" />
+        </span>
+        <h1 className="mt-5 text-2xl font-semibold tracking-tight">
+          Welcome back
+        </h1>
+        <p className="mt-2 text-sm text-zinc-400">
+          Sign in to save tax calculations and get airdrop alerts.
+        </p>
+
+        <div className="mt-6">
+          <LoginButtons redirectTo={redirectTo} />
+        </div>
+
+        <p className="mt-6 text-xs text-zinc-500">
+          By signing in you agree to our{" "}
+          <Link href="/terms" className="underline">
+            Terms
+          </Link>{" "}
+          and{" "}
+          <Link href="/privacy" className="underline">
+            Privacy Policy
+          </Link>
+          .
+        </p>
+      </GlassCard>
+    </div>
+  );
+}
