@@ -25,7 +25,18 @@ export async function updateSession(request: NextRequest) {
 
   const url = process.env.NEXT_PUBLIC_SUPABASE_URL;
   const key = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
-  if (!url || !key) return response;
+
+  // If Supabase is not configured, still redirect non-public paths to login
+  // so the site always requires authentication.
+  if (!url || !key) {
+    if (!isPublicPath(request.nextUrl.pathname)) {
+      const loginUrl = request.nextUrl.clone();
+      loginUrl.pathname = "/auth/login";
+      loginUrl.searchParams.set("redirect", request.nextUrl.pathname);
+      return NextResponse.redirect(loginUrl);
+    }
+    return response;
+  }
 
   const supabase = createServerClient<Database>(url, key, {
     cookies: {
