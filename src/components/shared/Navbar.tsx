@@ -7,6 +7,7 @@ import { Menu, X, Sparkles } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
+import { UserMenu } from "./UserMenu";
 
 const links = [
   { href: "/airdrops", label: "Airdrops" },
@@ -72,6 +73,7 @@ export function Navbar() {
         </nav>
 
         <div className="flex items-center gap-2">
+          <UserMenu />
           <Button asChild size="sm" className="hidden md:inline-flex">
             <Link href="/tax">Calculate Tax</Link>
           </Button>
