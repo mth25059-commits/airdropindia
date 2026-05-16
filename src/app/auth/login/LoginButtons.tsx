@@ -4,8 +4,6 @@ import * as React from "react";
 import { Loader2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { createClient } from "@/lib/supabase/client";
-import { getSiteUrl } from "@/lib/utils";
-
 export function LoginButtons({ redirectTo }: { redirectTo: string }) {
   const [loading, setLoading] = React.useState(false);
   const [error, setError] = React.useState<string | null>(null);
@@ -15,10 +13,11 @@ export function LoginButtons({ redirectTo }: { redirectTo: string }) {
     setLoading(true);
     try {
       const supabase = createClient();
+      const origin = window.location.origin;
       const { error } = await supabase.auth.signInWithOAuth({
         provider: "google",
         options: {
-          redirectTo: `${getSiteUrl()}/auth/callback?next=${encodeURIComponent(redirectTo)}`,
+          redirectTo: `${origin}/auth/callback?next=${encodeURIComponent(redirectTo)}`,
         },
       });
       if (error) throw error;

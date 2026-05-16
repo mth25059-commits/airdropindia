@@ -7,6 +7,7 @@ import { ScrollFade } from "@/components/shared/ScrollFade";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { createClient } from "@/lib/supabase/server";
+import { isSupabaseConfigured } from "@/lib/supabase/admin";
 
 export const metadata: Metadata = {
   title: "Crypto Tax Calculator India — 30% + 1% TDS (Section 115BBH & 194S)",
@@ -20,9 +21,12 @@ export const metadata: Metadata = {
 };
 
 export default async function TaxPage() {
-  const supabase = createClient();
-  const { data } = await supabase.auth.getUser();
-  const isLoggedIn = Boolean(data.user);
+  let isLoggedIn = false;
+  if (isSupabaseConfigured()) {
+    const supabase = createClient();
+    const { data } = await supabase.auth.getUser();
+    isLoggedIn = Boolean(data.user);
+  }
 
   return (
     <div className="container py-12">
