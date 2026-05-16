@@ -8,6 +8,12 @@ const PUBLIC_PATHS = [
   "/auth/signout",
   "/api/",
   "/manifest.webmanifest",
+  "/about",
+  "/terms",
+  "/privacy",
+  "/disclaimer",
+  "/sitemap.xml",
+  "/robots.txt",
 ];
 
 function isPublicPath(pathname: string): boolean {

@@ -4,7 +4,6 @@ import { isCurrentUserAdmin } from "@/lib/admin";
 import { createAdminClient, isSupabaseConfigured } from "@/lib/supabase/admin";
 import { getResend, isResendConfigured, FROM_EMAIL } from "@/lib/resend";
 import { slugify, getSiteUrl } from "@/lib/utils";
-import { renderAsync } from "@react-email/render";
 import { NewAirdropEmail } from "@/emails/NewAirdrop";
 
 const stepSchema = z.object({ title: z.string(), body: z.string() });
@@ -111,20 +110,17 @@ export async function POST(request: Request) {
       await Promise.all(
         filtered.slice(0, 100).map(async (s) => {
           try {
-            const html = await renderAsync(
-              NewAirdropEmail({
+            await resend.emails.send({
+              from: FROM_EMAIL,
+              to: s.email,
+              subject: `New airdrop: ${parsed.data.name}`,
+              react: NewAirdropEmail({
                 airdropName: parsed.data.name,
                 airdropUrl: url,
                 chain: parsed.data.chain,
                 description: parsed.data.description ?? null,
                 unsubscribeUrl: `${getSiteUrl()}/api/subscribe/unsubscribe?token=${s.unsubscribe_token}`,
               }),
-            );
-            await resend.emails.send({
-              from: FROM_EMAIL,
-              to: s.email,
-              subject: `New airdrop: ${parsed.data.name}`,
-              html,
             });
           } catch (e) {
             console.error("Failed to send to", s.email, e);

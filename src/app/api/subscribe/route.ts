@@ -4,7 +4,6 @@ import { createAdminClient, isSupabaseConfigured } from "@/lib/supabase/admin";
 import { getResend, isResendConfigured, FROM_EMAIL } from "@/lib/resend";
 import { randomToken, getSiteUrl } from "@/lib/utils";
 import { ConfirmSubscriptionEmail } from "@/emails/ConfirmSubscription";
-import { renderAsync } from "@react-email/render";
 
 const schema = z.object({
   email: z.string().email(),
@@ -77,14 +76,11 @@ export async function POST(request: Request) {
 
   if (isResendConfigured()) {
     try {
-      const html = await renderAsync(
-        ConfirmSubscriptionEmail({ confirmUrl, unsubscribeUrl }),
-      );
       await getResend().emails.send({
         from: FROM_EMAIL,
         to: email,
         subject: "Confirm your AirdropIndia subscription",
-        html,
+        react: ConfirmSubscriptionEmail({ confirmUrl, unsubscribeUrl }),
       });
     } catch (e) {
       console.error("Failed to send confirmation email:", e);

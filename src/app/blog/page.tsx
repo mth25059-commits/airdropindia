@@ -4,7 +4,7 @@ import { ArrowRight } from "lucide-react";
 import { GlassCard } from "@/components/shared/GlassCard";
 import { ScrollFade } from "@/components/shared/ScrollFade";
 import { Badge } from "@/components/ui/badge";
-import { getAllPosts } from "@/lib/blog";
+import { getAllPostsWithSupabase } from "@/lib/blog";
 
 export const metadata: Metadata = {
   title: "Blog — Indian Crypto Tax & Airdrop Guides",
@@ -13,8 +13,8 @@ export const metadata: Metadata = {
   alternates: { canonical: "/blog" },
 };
 
-export default function BlogPage() {
-  const posts = getAllPosts();
+export default async function BlogPage() {
+  const posts = await getAllPostsWithSupabase();
 
   return (
     <div className="container py-12">

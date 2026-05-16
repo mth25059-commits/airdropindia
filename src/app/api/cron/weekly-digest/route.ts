@@ -1,5 +1,4 @@
 import { NextResponse, type NextRequest } from "next/server";
-import { renderAsync } from "@react-email/render";
 import { verifyCronSecret } from "@/lib/admin";
 import { createAdminClient, isSupabaseConfigured } from "@/lib/supabase/admin";
 import { getResend, isResendConfigured, FROM_EMAIL } from "@/lib/resend";
@@ -51,18 +50,15 @@ export async function GET(request: NextRequest) {
   let sent = 0;
   for (const s of subs) {
     try {
-      const html = await renderAsync(
-        WeeklyDigestEmail({
-          airdrops: items,
-          digestUrl: `${base}/airdrops`,
-          unsubscribeUrl: `${base}/api/subscribe/unsubscribe?token=${s.unsubscribe_token}`,
-        }),
-      );
       await resend.emails.send({
         from: FROM_EMAIL,
         to: s.email,
         subject: `Weekly airdrops digest — ${airdrops.length} new this week`,
-        html,
+        react: WeeklyDigestEmail({
+          airdrops: items,
+          digestUrl: `${base}/airdrops`,
+          unsubscribeUrl: `${base}/api/subscribe/unsubscribe?token=${s.unsubscribe_token}`,
+        }),
       });
       sent += 1;
     } catch (e) {
