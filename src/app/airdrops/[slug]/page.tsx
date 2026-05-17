@@ -75,7 +75,7 @@ export default async function AirdropDetailPage({
     <article className="container py-10">
       <Link
         href="/airdrops"
-        className="inline-flex items-center gap-2 text-sm text-zinc-400 hover:text-white"
+        className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground"
       >
         <ArrowLeft className="h-4 w-4" /> Back to airdrops
       </Link>
@@ -105,7 +105,7 @@ export default async function AirdropDetailPage({
               <span className="gradient-text">{a.name}</span> Airdrop
             </h1>
             {a.description && (
-              <p className="mt-3 max-w-2xl text-zinc-400">{a.description}</p>
+              <p className="mt-3 max-w-2xl text-muted-foreground">{a.description}</p>
             )}
           </ScrollFade>
 
@@ -129,7 +129,7 @@ export default async function AirdropDetailPage({
 
         <ScrollFade delay={0.05}>
           <GlassCard className="p-5">
-            <h3 className="text-xs uppercase tracking-wider text-zinc-500">
+            <h3 className="text-xs uppercase tracking-wider text-muted-foreground">
               Quick info
             </h3>
             <div className="mt-3 space-y-3 text-sm">
@@ -188,13 +188,13 @@ export default async function AirdropDetailPage({
                 </div>
                 <div>
                   <h3 className="text-base font-semibold">{step.title}</h3>
-                  <p className="mt-1 text-sm text-zinc-400">{step.body}</p>
+                  <p className="mt-1 text-sm text-muted-foreground">{step.body}</p>
                 </div>
               </GlassCard>
             </ScrollFade>
           ))}
           {(!a.steps || a.steps.length === 0) && (
-            <GlassCard className="p-5 text-sm text-zinc-400">
+            <GlassCard className="p-5 text-sm text-muted-foreground">
               Guide coming soon. Subscribe to email alerts to get it the moment
               it&rsquo;s published.
             </GlassCard>
@@ -209,10 +209,10 @@ export default async function AirdropDetailPage({
             <AlertTriangle className="mt-0.5 h-5 w-5 text-amber-300" />
             <div>
               <h3 className="text-base font-semibold">Indian tax note</h3>
-              <p className="mt-2 text-sm text-zinc-400">
+              <p className="mt-2 text-sm text-muted-foreground">
                 When you sell tokens received from this airdrop in INR (or swap
                 them for another crypto), the profit is taxed under{" "}
-                <strong className="text-zinc-200">Section 115BBH</strong> at a
+                <strong className="text-foreground">Section 115BBH</strong> at a
                 flat 30% + 4% cess (<strong>31.2%</strong>). If the sale value
                 exceeds ₹10,000 in a financial year,{" "}
                 <strong>Section 194S</strong> 1% TDS also applies.
@@ -252,8 +252,8 @@ export default async function AirdropDetailPage({
 function Row({ label, value }: { label: string; value: React.ReactNode }) {
   return (
     <div className="flex items-center justify-between">
-      <span className="text-zinc-500">{label}</span>
-      <span className="font-medium text-zinc-200">{value}</span>
+      <span className="text-muted-foreground">{label}</span>
+      <span className="font-medium text-foreground">{value}</span>
     </div>
   );
 }

@@ -20,7 +20,7 @@ export default async function DashboardPage() {
       <div className="container py-16">
         <GlassCard className="mx-auto max-w-2xl p-8 text-center">
           <h1 className="text-2xl font-semibold">Setup required</h1>
-          <p className="mt-2 text-sm text-zinc-400">
+          <p className="mt-2 text-sm text-muted-foreground">
             Configure Supabase env vars to enable the dashboard.
           </p>
         </GlassCard>
@@ -44,7 +44,7 @@ export default async function DashboardPage() {
         <h1 className="text-2xl font-semibold tracking-tight sm:text-3xl">
           <span className="gradient-text">My Dashboard</span>
         </h1>
-        <p className="mt-1 text-sm text-zinc-400">
+        <p className="mt-1 text-sm text-muted-foreground">
           Signed in as {userData.user.email}
         </p>
       </header>
@@ -107,7 +107,7 @@ function Card({
           <Icon className="h-5 w-5" />
         </div>
         <h3 className="mt-4 text-base font-semibold">{title}</h3>
-        <p className="mt-1 text-sm text-zinc-400">{body}</p>
+        <p className="mt-1 text-sm text-muted-foreground">{body}</p>
       </GlassCard>
     </Link>
   );

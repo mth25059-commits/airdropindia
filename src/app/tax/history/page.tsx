@@ -48,7 +48,7 @@ export default async function TaxHistoryPage() {
           <h1 className="text-3xl font-semibold tracking-tight sm:text-4xl">
             <span className="gradient-text">My Tax History</span>
           </h1>
-          <p className="mt-3 text-zinc-400">
+          <p className="mt-3 text-muted-foreground">
             Nothing here yet. Run a calculation and click &ldquo;Save to history&rdquo;.
           </p>
           <Button asChild className="mt-6">
@@ -71,7 +71,7 @@ export default async function TaxHistoryPage() {
             <h1 className="text-2xl font-semibold tracking-tight sm:text-3xl">
               <span className="gradient-text">My Tax History</span>
             </h1>
-            <p className="mt-1 text-sm text-zinc-400">
+            <p className="mt-1 text-sm text-muted-foreground">
               {calcs.length} saved {calcs.length === 1 ? "calculation" : "calculations"}.
             </p>
           </div>
@@ -104,13 +104,13 @@ export default async function TaxHistoryPage() {
                       year: "numeric",
                     }).format(new Date(c.created_at))}
                   </div>
-                  <div className="mt-0.5 text-xs text-zinc-400">
+                  <div className="mt-0.5 text-xs text-muted-foreground">
                     {c.quantity} × ₹{c.buy_price} → ₹{c.sell_price}
                   </div>
                 </div>
                 <div className="flex items-center gap-3 text-right">
                   <div>
-                    <div className="text-[10px] uppercase tracking-wider text-zinc-500">P/L</div>
+                    <div className="text-[10px] uppercase tracking-wider text-muted-foreground">P/L</div>
                     <div
                       className={`text-sm font-medium ${
                         c.profit_loss >= 0 ? "text-emerald-300" : "text-rose-300"
@@ -125,7 +125,7 @@ export default async function TaxHistoryPage() {
                     </div>
                   </div>
                   <div>
-                    <div className="text-[10px] uppercase tracking-wider text-zinc-500">Tax</div>
+                    <div className="text-[10px] uppercase tracking-wider text-muted-foreground">Tax</div>
                     <div className="text-sm font-medium text-brand-glow">{formatINR(c.total_tax)}</div>
                   </div>
                 </div>
@@ -142,9 +142,9 @@ function EmptyState({ title, body }: { title: string; body: string }) {
   return (
     <div className="container py-16">
       <GlassCard className="mx-auto max-w-2xl p-8 text-center">
-        <History className="mx-auto h-8 w-8 text-zinc-500" />
+        <History className="mx-auto h-8 w-8 text-muted-foreground" />
         <h1 className="mt-3 text-xl font-semibold">{title}</h1>
-        <p className="mt-2 text-sm text-zinc-400">{body}</p>
+        <p className="mt-2 text-sm text-muted-foreground">{body}</p>
       </GlassCard>
     </div>
   );
@@ -167,7 +167,7 @@ function Stat({
         : "text-brand-glow";
   return (
     <GlassCard className="p-4">
-      <div className="text-[10px] uppercase tracking-wider text-zinc-500">{label}</div>
+      <div className="text-[10px] uppercase tracking-wider text-muted-foreground">{label}</div>
       <div className={`mt-1 text-xl font-semibold tabular-nums ${tone}`}>{value}</div>
     </GlassCard>
   );

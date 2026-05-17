@@ -58,7 +58,7 @@ export default function TaxExamplesPage() {
         <h1 className="mt-5 text-balance text-4xl font-semibold tracking-tight sm:text-5xl">
           See how <span className="gradient-text">115BBH + 194S</span> apply
         </h1>
-        <p className="mx-auto mt-4 max-w-2xl text-zinc-400">
+        <p className="mx-auto mt-4 max-w-2xl text-muted-foreground">
           Three real scenarios with full math — profit, loss, and a high-volume
           trade. Tap any to compute it live.
         </p>
@@ -73,7 +73,7 @@ export default function TaxExamplesPage() {
                 <div className="flex items-start justify-between gap-3">
                   <div>
                     <h2 className="text-xl font-semibold">{ex.title}</h2>
-                    <p className="mt-2 text-sm text-zinc-400">{ex.description}</p>
+                    <p className="mt-2 text-sm text-muted-foreground">{ex.description}</p>
                   </div>
                   <span
                     className={`inline-flex items-center gap-1 rounded-full border px-2 py-0.5 text-xs ${
@@ -108,7 +108,7 @@ export default function TaxExamplesPage() {
                   />
                 </div>
 
-                <ul className="mt-5 space-y-1.5 text-xs text-zinc-400">
+                <ul className="mt-5 space-y-1.5 text-xs text-muted-foreground">
                   {r.notes.map((n, j) => (
                     <li key={j}>• {n}</li>
                   ))}
@@ -131,7 +131,7 @@ export default function TaxExamplesPage() {
 
       <section className="mx-auto mt-16 max-w-3xl text-center">
         <h2 className="text-2xl font-semibold tracking-tight">Want a different scenario?</h2>
-        <p className="mt-3 text-zinc-400">
+        <p className="mt-3 text-muted-foreground">
           Punch your numbers into the live calculator and download a PDF.
         </p>
         <Button asChild className="mt-6">
@@ -158,10 +158,10 @@ function Stat({
         ? "text-rose-300"
         : accent === "brand"
           ? "text-brand-glow"
-          : "text-zinc-100";
+          : "text-foreground";
   return (
-    <div className="rounded-xl border border-white/[0.06] bg-white/[0.02] p-3">
-      <div className="text-[10px] uppercase tracking-wider text-zinc-500">{label}</div>
+    <div className="rounded-xl border border-border bg-card/50 p-3">
+      <div className="text-[10px] uppercase tracking-wider text-muted-foreground">{label}</div>
       <div className={`mt-1 font-medium tabular-nums ${tone}`}>{value}</div>
     </div>
   );

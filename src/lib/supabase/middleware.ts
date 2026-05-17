@@ -10,6 +10,7 @@ const PUBLIC_PATHS = [
   "/api/",
   "/manifest.webmanifest",
   "/about",
+  "/contact",
   "/terms",
   "/privacy",
   "/disclaimer",

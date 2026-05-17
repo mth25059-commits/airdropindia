@@ -105,7 +105,7 @@ export function AdminBlogForm() {
           id="blog-content"
           required
           rows={10}
-          className="mt-1 flex min-h-[200px] w-full rounded-xl border border-white/10 bg-white/[0.03] px-4 py-3 text-sm text-white placeholder:text-zinc-500 focus:border-brand-purple/50 focus:outline-none focus:ring-2 focus:ring-brand-purple/30"
+          className="mt-1 flex min-h-[200px] w-full rounded-xl border border-border bg-input px-4 py-3 text-sm placeholder:text-muted-foreground focus:border-brand-purple/50 focus:outline-none focus:ring-2 focus:ring-brand-purple/30"
           value={content}
           onChange={(e) => setContent(e.target.value)}
         />
@@ -119,7 +119,7 @@ export function AdminBlogForm() {
         )}
         Publish blog post
       </Button>
-      {message && <p className="text-xs text-zinc-400">{message}</p>}
+      {message && <p className="text-xs text-muted-foreground">{message}</p>}
     </form>
   );
 }

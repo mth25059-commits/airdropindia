@@ -1,6 +1,8 @@
 import { NextResponse } from "next/server";
 import { z } from "zod";
 import { createAdminClient, isSupabaseConfigured } from "@/lib/supabase/admin";
+import { getResend, isResendConfigured, FROM_EMAIL } from "@/lib/resend";
+import { getAdminEmails } from "@/lib/admin";
 import { slugify } from "@/lib/utils";
 
 const schema = z.object({
@@ -55,5 +57,35 @@ export async function POST(request: Request) {
       { status: 500 },
     );
   }
-  return NextResponse.json({ ok: true });
+
+  // Notify admin about new airdrop submission
+  if (isResendConfigured()) {
+    const admins = getAdminEmails();
+    if (admins.length > 0) {
+      try {
+        await getResend().emails.send({
+          from: FROM_EMAIL,
+          to: admins[0],
+          subject: `New airdrop submission: ${parsed.data.name}`,
+          html: `<div style="font-family:sans-serif;max-width:560px;margin:0 auto;padding:24px;background:#0a0a0a;color:#fafafa;">
+            <h2 style="color:#a78bfa;">New Airdrop Submission</h2>
+            <p><strong>Name:</strong> ${parsed.data.name}</p>
+            <p><strong>Chain:</strong> ${parsed.data.chain}</p>
+            <p><strong>URL:</strong> <a href="${parsed.data.official_url}" style="color:#a78bfa;">${parsed.data.official_url}</a></p>
+            <p><strong>Description:</strong> ${parsed.data.description || "—"}</p>
+            <p><strong>Submitter:</strong> ${parsed.data.submitter_email || "Anonymous"}</p>
+            <hr style="border-color:#333;margin:16px 0;" />
+            <p style="color:#a1a1aa;font-size:13px;">Review this submission in your <a href="${process.env.NEXT_PUBLIC_SITE_URL || ""}/admin" style="color:#a78bfa;">admin panel</a>.</p>
+          </div>`,
+        });
+      } catch (e) {
+        console.error("Failed to send airdrop submission notification:", e);
+      }
+    }
+  }
+
+  return NextResponse.json({
+    ok: true,
+    message: "Airdrop submitted successfully! It will be reviewed by our team.",
+  });
 }
