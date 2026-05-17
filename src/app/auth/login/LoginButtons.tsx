@@ -49,7 +49,7 @@ export function LoginButtons({ redirectTo }: { redirectTo: string }) {
         <p className="text-xs text-rose-400">
           {error}
           <br />
-          <span className="text-zinc-500">
+          <span className="text-muted-foreground">
             (Supabase + Google OAuth must be configured.)
           </span>
         </p>

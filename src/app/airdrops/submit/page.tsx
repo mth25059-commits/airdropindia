@@ -59,7 +59,7 @@ export default function SubmitAirdropPage() {
         <h1 className="text-balance text-3xl font-semibold tracking-tight sm:text-4xl">
           Submit an <span className="gradient-text">airdrop</span>
         </h1>
-        <p className="mt-3 text-zinc-400">
+        <p className="mt-3 text-muted-foreground">
           Spotted a fresh airdrop? Tell us — we&apos;ll review and publish a guide.
         </p>
 
@@ -90,7 +90,7 @@ export default function SubmitAirdropPage() {
                 id="description"
                 name="description"
                 rows={4}
-                className="mt-1 flex min-h-[100px] w-full rounded-xl border border-white/10 bg-white/[0.03] px-4 py-3 text-sm text-white placeholder:text-zinc-500 focus:border-brand-purple/50 focus:outline-none focus:ring-2 focus:ring-brand-purple/30"
+                className="mt-1 flex min-h-[100px] w-full rounded-xl border border-border bg-input px-4 py-3 text-sm placeholder:text-muted-foreground focus:border-brand-purple/50 focus:outline-none focus:ring-2 focus:ring-brand-purple/30"
                 placeholder="Tell us what it is, how to qualify, link to the announcement…"
               />
             </div>
@@ -144,7 +144,7 @@ export default function SubmitAirdropPage() {
           </form>
         </GlassCard>
 
-        <p className="mt-6 text-xs text-zinc-500">
+        <p className="mt-6 text-xs text-muted-foreground">
           We review every submission manually. No spam, no rug-pulls, no
           obvious scams.
         </p>

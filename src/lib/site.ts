@@ -54,6 +54,6 @@ export function getDifficultyColor(d: Difficulty | string): string {
     case "hard":
       return "text-rose-300 bg-rose-500/10 border-rose-500/20";
     default:
-      return "text-zinc-300 bg-white/5 border-white/10";
+      return "text-muted-foreground bg-white/5 border-border";
   }
 }
