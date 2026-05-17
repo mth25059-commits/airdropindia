@@ -271,15 +271,15 @@ export function TaxCalculator({ initialInputs, isLoggedIn }: Props) {
               onChange={(e) => setYearlyTotal(e.target.value)}
               placeholder="Leave 0 to use only this trade"
             />
-            <p className="mt-1 text-xs text-zinc-500">
+            <p className="mt-1 text-xs text-muted-foreground">
               Used to check the ₹10,000 / ₹50,000 TDS threshold under Section 194S.
             </p>
           </div>
           <div className="sm:col-span-2">
-            <label className="flex cursor-pointer items-center gap-2 text-sm text-zinc-300">
+            <label className="flex cursor-pointer items-center gap-2 text-sm">
               <input
                 type="checkbox"
-                className="h-4 w-4 rounded border-white/20 bg-white/[0.05] text-brand-purple"
+                className="h-4 w-4 rounded border-border bg-input text-brand-purple"
                 checked={specifiedPerson}
                 onChange={(e) => setSpecifiedPerson(e.target.checked)}
               />
@@ -319,7 +319,7 @@ export function TaxCalculator({ initialInputs, isLoggedIn }: Props) {
           />
         </div>
 
-        <hr className="my-5 border-white/[0.06]" />
+        <hr className="my-5 border-border" />
 
         <div className="space-y-1.5">
           <Row
@@ -348,7 +348,7 @@ export function TaxCalculator({ initialInputs, isLoggedIn }: Props) {
           <Row label="Effective rate" value={`${(result.effectiveRate * 100).toFixed(2)}%`} />
         </div>
 
-        <hr className="my-5 border-white/[0.06]" />
+        <hr className="my-5 border-border" />
 
         <motion.div
           key={result.netCashFromSale}
@@ -377,28 +377,28 @@ export function TaxCalculator({ initialInputs, isLoggedIn }: Props) {
           </Button>
         </div>
         {savedMessage && (
-          <p className="mt-2 text-xs text-zinc-400">{savedMessage}</p>
+          <p className="mt-2 text-xs text-muted-foreground">{savedMessage}</p>
         )}
 
         {aiOpen && (
-          <div className="mt-5 rounded-xl border border-brand-purple/30 bg-brand-gradient-soft p-4 text-sm text-zinc-200">
+          <div className="mt-5 rounded-xl border border-brand-purple/30 bg-brand-gradient-soft p-4 text-sm">
             <header className="mb-2 flex items-center gap-2 text-brand-glow">
               <Sparkles className="h-4 w-4" />
               <strong>AI explanation</strong>
             </header>
             {aiLoading ? (
-              <p className="text-zinc-400">Generating explanation…</p>
+              <p className="text-muted-foreground">Generating explanation…</p>
             ) : (
-              <p className="whitespace-pre-wrap text-zinc-300">{aiText}</p>
+              <p className="whitespace-pre-wrap">{aiText}</p>
             )}
           </div>
         )}
 
-        <details className="mt-5 rounded-xl border border-white/[0.06] bg-white/[0.02] p-3">
-          <summary className="cursor-pointer text-xs font-medium text-zinc-300">
+        <details className="mt-5 rounded-xl border border-border bg-card/50 p-3">
+          <summary className="cursor-pointer text-xs font-medium">
             Show notes ({result.notes.length})
           </summary>
-          <ul className="mt-2 space-y-1.5 text-xs text-zinc-400">
+          <ul className="mt-2 space-y-1.5 text-xs text-muted-foreground">
             {result.notes.map((n, i) => (
               <li key={i}>• {n}</li>
             ))}
@@ -420,8 +420,8 @@ function Row({
 }) {
   return (
     <div className="flex items-center justify-between text-sm">
-      <span className="text-zinc-400">{label}</span>
-      <span className={`tabular-nums ${valueClass ?? "text-zinc-100"}`}>{value}</span>
+      <span className="text-muted-foreground">{label}</span>
+      <span className={`tabular-nums ${valueClass ?? ""}`}>{value}</span>
     </div>
   );
 }

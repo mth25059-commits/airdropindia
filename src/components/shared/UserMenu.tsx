@@ -25,7 +25,7 @@ export function UserMenu() {
     <form action="/auth/signout" method="post">
       <button
         type="submit"
-        className="inline-flex items-center gap-1.5 rounded-full border border-white/10 bg-white/[0.04] px-3 py-1.5 text-xs font-medium text-zinc-400 transition-colors hover:bg-white/[0.08] hover:text-white"
+        className="inline-flex items-center gap-1.5 rounded-full border border-border bg-card/50 px-3 py-1.5 text-xs font-medium text-muted-foreground transition-colors hover:bg-card hover:text-foreground"
         title={user.email ?? "Sign out"}
       >
         <User className="h-3.5 w-3.5" />

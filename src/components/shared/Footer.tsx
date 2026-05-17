@@ -34,7 +34,7 @@ const cols = [
 
 export function Footer() {
   return (
-    <footer className="relative mt-24 border-t border-white/[0.05]">
+    <footer className="relative mt-24 border-t border-border">
       <div className="container py-12">
         <div className="grid gap-10 md:grid-cols-4">
           <div>
@@ -46,21 +46,21 @@ export function Footer() {
                 <span className="gradient-text">AirdropIndia</span>
               </span>
             </Link>
-            <p className="mt-3 max-w-xs text-sm text-zinc-400">
+            <p className="mt-3 max-w-xs text-sm text-muted-foreground">
               {SITE.description}
             </p>
             <div className="mt-4 flex gap-2">
               <a
                 href="https://twitter.com"
                 aria-label="Twitter"
-                className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-white/10 text-zinc-400 hover:text-white"
+                className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-border text-muted-foreground hover:text-foreground"
               >
                 <Twitter className="h-4 w-4" />
               </a>
               <a
                 href="https://github.com"
                 aria-label="GitHub"
-                className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-white/10 text-zinc-400 hover:text-white"
+                className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-border text-muted-foreground hover:text-foreground"
               >
                 <Github className="h-4 w-4" />
               </a>
@@ -69,7 +69,7 @@ export function Footer() {
 
           {cols.map((col) => (
             <div key={col.title}>
-              <h4 className="mb-3 text-sm font-semibold text-white">
+              <h4 className="mb-3 text-sm font-semibold text-foreground">
                 {col.title}
               </h4>
               <ul className="space-y-2">
@@ -77,7 +77,7 @@ export function Footer() {
                   <li key={l.href}>
                     <Link
                       href={l.href}
-                      className="text-sm text-zinc-400 hover:text-white"
+                      className="text-sm text-muted-foreground hover:text-foreground"
                     >
                       {l.label}
                     </Link>
@@ -88,7 +88,7 @@ export function Footer() {
           ))}
         </div>
 
-        <div className="mt-10 flex flex-col items-center justify-between gap-3 border-t border-white/[0.05] pt-6 text-xs text-zinc-500 sm:flex-row">
+        <div className="mt-10 flex flex-col items-center justify-between gap-3 border-t border-border pt-6 text-xs text-muted-foreground sm:flex-row">
           <p>
             © {new Date().getFullYear()} {SITE.name}. Built for Indian crypto
             users.

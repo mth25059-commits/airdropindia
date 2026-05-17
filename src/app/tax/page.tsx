@@ -42,7 +42,7 @@ export default async function TaxPage() {
           </h1>
         </ScrollFade>
         <ScrollFade delay={0.1}>
-          <p className="mx-auto mt-4 max-w-2xl text-zinc-400">
+          <p className="mx-auto mt-4 max-w-2xl text-muted-foreground">
             30% flat + 4% cess + 1% TDS — every rule from the Indian Income-tax
             Act, coded exactly. Free, private, instant.
           </p>
@@ -74,7 +74,7 @@ export default async function TaxPage() {
         <div className="mt-4 grid gap-4 sm:grid-cols-2">
           <GlassCard className="p-5">
             <h3 className="text-sm font-semibold">Section 115BBH (30% flat)</h3>
-            <p className="mt-2 text-sm text-zinc-400">
+            <p className="mt-2 text-sm text-muted-foreground">
               Profit from transfer of VDA is taxed at a flat 30%, regardless of
               your income slab. No deductions except cost of acquisition. Losses
               can&rsquo;t offset other income.
@@ -82,7 +82,7 @@ export default async function TaxPage() {
           </GlassCard>
           <GlassCard className="p-5">
             <h3 className="text-sm font-semibold">Section 194S (1% TDS)</h3>
-            <p className="mt-2 text-sm text-zinc-400">
+            <p className="mt-2 text-sm text-muted-foreground">
               The buyer or exchange withholds 1% TDS on sells &gt; ₹10,000 in a
               FY (₹50,000 for specified persons). Claim it back as TDS credit
               in your ITR.
@@ -90,14 +90,14 @@ export default async function TaxPage() {
           </GlassCard>
           <GlassCard className="p-5">
             <h3 className="text-sm font-semibold">Cess + Surcharge</h3>
-            <p className="mt-2 text-sm text-zinc-400">
+            <p className="mt-2 text-sm text-muted-foreground">
               4% Health &amp; Education cess on the tax. High-income filers add a
               10/15/25/37% surcharge based on slab.
             </p>
           </GlassCard>
           <GlassCard className="p-5">
             <h3 className="text-sm font-semibold">Always-on disclaimer</h3>
-            <p className="mt-2 text-sm text-zinc-400">
+            <p className="mt-2 text-sm text-muted-foreground">
               Informational only. Tax law evolves — always validate with a
               Chartered Accountant before filing.
             </p>

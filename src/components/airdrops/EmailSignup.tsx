@@ -50,7 +50,7 @@ export function EmailSignup() {
         </span>
         <div>
           <h3 className="text-lg font-semibold">Get alerts for new airdrops</h3>
-          <p className="mt-1 text-sm text-zinc-400">
+          <p className="mt-1 text-sm text-muted-foreground">
             One-line emails when a new airdrop lands. Unsubscribe anytime.
           </p>
         </div>

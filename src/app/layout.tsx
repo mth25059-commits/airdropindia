@@ -8,6 +8,7 @@ import { getSiteUrl } from "@/lib/utils";
 import { Navbar } from "@/components/shared/Navbar";
 import { Footer } from "@/components/shared/Footer";
 import { ParticleBackground } from "@/components/three/ParticleBackground";
+import { ThemeProvider } from "@/components/shared/ThemeProvider";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -65,14 +66,19 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${inter.variable} dark`}>
-      <body className="relative min-h-dvh overflow-x-hidden bg-background font-sans text-foreground antialiased">
-        <ParticleBackground />
-        <div className="relative z-10 flex min-h-dvh flex-col">
-          <Navbar />
-          <main className="flex-1">{children}</main>
-          <Footer />
-        </div>
+    <html lang="en" className={`${inter.variable} dark`} suppressHydrationWarning>
+      <head>
+        <script dangerouslySetInnerHTML={{ __html: `(function(){try{var t=localStorage.getItem('theme');if(t==='light'){document.documentElement.classList.remove('dark');document.documentElement.classList.add('light')}}catch(e){}})()` }} />
+      </head>
+      <body className="relative min-h-dvh overflow-x-hidden font-sans antialiased">
+        <ThemeProvider>
+          <ParticleBackground />
+          <div className="relative z-10 flex min-h-dvh flex-col">
+            <Navbar />
+            <main className="flex-1">{children}</main>
+            <Footer />
+          </div>
+        </ThemeProvider>
         <Analytics />
         <script
           type="application/ld+json"

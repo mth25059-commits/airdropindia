@@ -45,13 +45,13 @@ export default async function BlogPostPage({ params }: Props) {
     <article className="container-prose py-12">
       <Link
         href="/blog"
-        className="inline-flex items-center gap-2 text-sm text-zinc-400 hover:text-white"
+        className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground"
       >
         <ArrowLeft className="h-4 w-4" /> Back to blog
       </Link>
 
       <header className="mt-6">
-        <div className="flex flex-wrap items-center gap-2 text-xs text-zinc-500">
+        <div className="flex flex-wrap items-center gap-2 text-xs text-muted-foreground">
           <Badge>{post.category}</Badge>
           <span>{post.readingTime} min read</span>
           <span>·</span>
@@ -66,10 +66,10 @@ export default async function BlogPostPage({ params }: Props) {
         <h1 className="mt-3 text-balance text-3xl font-semibold tracking-tight sm:text-4xl">
           {post.title}
         </h1>
-        <p className="mt-3 text-zinc-400">{post.excerpt}</p>
+        <p className="mt-3 text-muted-foreground">{post.excerpt}</p>
       </header>
 
-      <div className="prose-invert mt-8">
+      <div className="prose-invert mt-8 rounded-2xl bg-background/80 backdrop-blur-md p-6 sm:p-8">
         <ReactMarkdown remarkPlugins={[remarkGfm]}>{post.content}</ReactMarkdown>
       </div>
 

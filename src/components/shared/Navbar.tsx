@@ -8,6 +8,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { UserMenu } from "./UserMenu";
+import { ThemeToggle } from "./ThemeToggle";
 
 const links = [
   { href: "/airdrops", label: "Airdrops" },
@@ -37,7 +38,7 @@ export function Navbar() {
       className={cn(
         "sticky top-0 z-40 w-full transition-all duration-300",
         scrolled
-          ? "backdrop-blur-xl border-b border-white/[0.06] bg-background/70"
+          ? "backdrop-blur-xl border-b border-border bg-background/80"
           : "border-b border-transparent",
       )}
     >
@@ -62,8 +63,8 @@ export function Navbar() {
                 key={l.href}
                 href={l.href}
                 className={cn(
-                  "rounded-full px-4 py-2 text-sm font-medium text-zinc-400 transition-colors hover:text-white",
-                  active && "bg-white/[0.06] text-white",
+                  "rounded-full px-4 py-2 text-sm font-medium text-muted-foreground transition-colors hover:text-foreground",
+                  active && "bg-accent/10 text-foreground",
                 )}
               >
                 {l.label}
@@ -74,11 +75,12 @@ export function Navbar() {
 
         <div className="flex items-center gap-2">
           <UserMenu />
+          <ThemeToggle />
           <Button asChild size="sm" className="hidden md:inline-flex">
             <Link href="/tax">Calculate Tax</Link>
           </Button>
           <button
-            className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-white/10 bg-white/[0.04] md:hidden"
+            className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-border bg-card/50 md:hidden"
             onClick={() => setOpen((v) => !v)}
             aria-label="Toggle menu"
           >
@@ -94,14 +96,14 @@ export function Navbar() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -8 }}
             transition={{ duration: 0.2 }}
-            className="border-b border-white/[0.06] bg-background/95 backdrop-blur-xl md:hidden"
+            className="border-b border-border bg-background/95 backdrop-blur-xl md:hidden"
           >
             <nav className="container flex flex-col gap-1 py-3">
               {links.map((l) => (
                 <Link
                   key={l.href}
                   href={l.href}
-                  className="rounded-xl px-3 py-3 text-sm font-medium text-zinc-300 hover:bg-white/[0.04] hover:text-white"
+                  className="rounded-xl px-3 py-3 text-sm font-medium text-muted-foreground hover:bg-accent/10 hover:text-foreground"
                 >
                   {l.label}
                 </Link>

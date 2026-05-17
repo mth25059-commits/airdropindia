@@ -19,7 +19,7 @@ export function AirdropCard({ airdrop }: { airdrop: AirdropRow }) {
         <div className="flex items-start justify-between gap-3">
           <div className="flex items-center gap-3">
             <div
-              className="flex h-10 w-10 items-center justify-center rounded-xl border border-white/10 bg-white/[0.04] text-sm font-semibold"
+              className="flex h-10 w-10 items-center justify-center rounded-xl border border-border bg-card/50 text-sm font-semibold"
               style={chain ? { borderColor: `${chain.color}40` } : undefined}
             >
               {airdrop.name.slice(0, 1).toUpperCase()}
@@ -28,7 +28,7 @@ export function AirdropCard({ airdrop }: { airdrop: AirdropRow }) {
               <h3 className="text-base font-semibold leading-tight">
                 {airdrop.name}
               </h3>
-              <div className="mt-0.5 flex items-center gap-2 text-xs text-zinc-400">
+              <div className="mt-0.5 flex items-center gap-2 text-xs text-muted-foreground">
                 {chain && (
                   <span
                     className="inline-flex items-center gap-1"
@@ -62,32 +62,32 @@ export function AirdropCard({ airdrop }: { airdrop: AirdropRow }) {
         </div>
 
         {airdrop.description && (
-          <p className="mt-3 line-clamp-2 text-sm text-zinc-400">
+          <p className="mt-3 line-clamp-2 text-sm text-muted-foreground">
             {airdrop.description}
           </p>
         )}
 
         <div className="mt-4 grid grid-cols-2 gap-2 text-xs">
-          <div className="flex items-center gap-2 rounded-lg border border-white/5 bg-white/[0.02] px-2.5 py-2">
+          <div className="flex items-center gap-2 rounded-lg border border-border bg-card/30 px-2.5 py-2">
             <Coins className="h-3.5 w-3.5 text-brand-glow" />
             <div>
-              <div className="text-[10px] uppercase tracking-wider text-zinc-500">
+              <div className="text-[10px] uppercase tracking-wider text-muted-foreground">
                 Est. value
               </div>
-              <div className="font-medium text-zinc-200">
+              <div className="font-medium">
                 {airdrop.estimated_value_usd
                   ? formatUSD(airdrop.estimated_value_usd)
                   : "TBD"}
               </div>
             </div>
           </div>
-          <div className="flex items-center gap-2 rounded-lg border border-white/5 bg-white/[0.02] px-2.5 py-2">
+          <div className="flex items-center gap-2 rounded-lg border border-border bg-card/30 px-2.5 py-2">
             <Clock className="h-3.5 w-3.5 text-brand-glow" />
             <div>
-              <div className="text-[10px] uppercase tracking-wider text-zinc-500">
+              <div className="text-[10px] uppercase tracking-wider text-muted-foreground">
                 Deadline
               </div>
-              <div className="font-medium text-zinc-200">
+              <div className="font-medium">
                 {deadline
                   ? expired
                     ? "Ended"
@@ -99,7 +99,7 @@ export function AirdropCard({ airdrop }: { airdrop: AirdropRow }) {
         </div>
 
         <div className="mt-4 flex items-center justify-between text-xs">
-          <div className="flex items-center gap-1.5 text-zinc-400">
+          <div className="flex items-center gap-1.5 text-muted-foreground">
             <Target className="h-3.5 w-3.5" />
             {airdrop.steps?.length ?? 0} steps
           </div>

@@ -22,7 +22,7 @@ export default async function BlogPage() {
         <h1 className="text-balance text-4xl font-semibold tracking-tight sm:text-5xl">
           The <span className="gradient-text">Blog</span>
         </h1>
-        <p className="mx-auto mt-4 max-w-2xl text-zinc-400">
+        <p className="mx-auto mt-4 max-w-2xl text-muted-foreground">
           No-fluff guides on Indian crypto tax and how to claim airdrops
           safely. Written by humans, occasionally co-written with AI.
         </p>
@@ -33,14 +33,14 @@ export default async function BlogPage() {
           <ScrollFade key={p.slug} delay={Math.min(i * 0.04, 0.2)}>
             <Link href={`/blog/${p.slug}`}>
               <GlassCard className="h-full p-5">
-                <div className="flex items-center gap-2 text-xs text-zinc-500">
+                <div className="flex items-center gap-2 text-xs text-muted-foreground">
                   <Badge>{p.category}</Badge>
                   <span>{p.readingTime} min read</span>
                 </div>
                 <h2 className="mt-3 text-lg font-semibold leading-snug">
                   {p.title}
                 </h2>
-                <p className="mt-2 line-clamp-3 text-sm text-zinc-400">
+                <p className="mt-2 line-clamp-3 text-sm text-muted-foreground">
                   {p.excerpt}
                 </p>
                 <div className="mt-4 inline-flex items-center gap-1 text-xs text-brand-glow">
@@ -52,7 +52,7 @@ export default async function BlogPage() {
         ))}
         {posts.length === 0 && (
           <GlassCard className="col-span-full p-8 text-center">
-            <p className="text-zinc-400">No posts yet. Coming soon.</p>
+            <p className="text-muted-foreground">No posts yet. Coming soon.</p>
           </GlassCard>
         )}
       </div>

@@ -73,7 +73,7 @@ export default async function AirdropsPage({ searchParams }: PageProps) {
           </h1>
         </ScrollFade>
         <ScrollFade delay={0.05}>
-          <p className="mx-auto mt-4 max-w-2xl text-zinc-400">
+          <p className="mx-auto mt-4 max-w-2xl text-muted-foreground">
             Hand-picked airdrops with step-by-step claim guides. Always check
             the official URL before connecting your wallet.
           </p>
@@ -90,7 +90,7 @@ export default async function AirdropsPage({ searchParams }: PageProps) {
         {airdrops.length === 0 ? (
           <GlassCard className="p-10 text-center">
             <h3 className="text-lg font-semibold">No airdrops match your filters.</h3>
-            <p className="mt-2 text-sm text-zinc-400">Try clearing filters or check back tomorrow — new drops are added daily.</p>
+            <p className="mt-2 text-sm text-muted-foreground">Try clearing filters or check back tomorrow — new drops are added daily.</p>
           </GlassCard>
         ) : (
           <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
