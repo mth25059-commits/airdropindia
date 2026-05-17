@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Sparkles, Github, Twitter } from "lucide-react";
+import { Sparkles, Github, Linkedin, Instagram, Send } from "lucide-react";
 import { SITE } from "@/lib/site";
 
 const cols = [
@@ -25,11 +25,19 @@ const cols = [
     title: "Company",
     links: [
       { href: "/about", label: "About" },
+      { href: "/contact", label: "Contact" },
       { href: "/privacy", label: "Privacy" },
       { href: "/terms", label: "Terms" },
       { href: "/disclaimer", label: "Disclaimer" },
     ],
   },
+];
+
+const SOCIAL_ICONS = [
+  { envKey: "NEXT_PUBLIC_LINKEDIN_URL", label: "LinkedIn", icon: Linkedin },
+  { envKey: "NEXT_PUBLIC_INSTAGRAM_URL", label: "Instagram", icon: Instagram },
+  { envKey: "NEXT_PUBLIC_GITHUB_URL", label: "GitHub", icon: Github },
+  { envKey: "NEXT_PUBLIC_TELEGRAM_URL", label: "Telegram", icon: Send },
 ];
 
 export function Footer() {
@@ -50,20 +58,23 @@ export function Footer() {
               {SITE.description}
             </p>
             <div className="mt-4 flex gap-2">
-              <a
-                href="https://twitter.com"
-                aria-label="Twitter"
-                className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-border text-muted-foreground hover:text-foreground"
-              >
-                <Twitter className="h-4 w-4" />
-              </a>
-              <a
-                href="https://github.com"
-                aria-label="GitHub"
-                className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-border text-muted-foreground hover:text-foreground"
-              >
-                <Github className="h-4 w-4" />
-              </a>
+              {SOCIAL_ICONS.map((s) => {
+                const url = process.env[s.envKey];
+                if (!url) return null;
+                const Icon = s.icon;
+                return (
+                  <a
+                    key={s.envKey}
+                    href={url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={s.label}
+                    className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-border text-muted-foreground hover:text-foreground"
+                  >
+                    <Icon className="h-4 w-4" />
+                  </a>
+                );
+              })}
             </div>
           </div>
 

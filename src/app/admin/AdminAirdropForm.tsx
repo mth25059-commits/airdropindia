@@ -201,7 +201,7 @@ export function AdminAirdropForm() {
         <textarea
           id="description"
           rows={3}
-          className="mt-1 flex min-h-[80px] w-full rounded-xl border border-white/10 bg-white/[0.03] px-4 py-3 text-sm text-white placeholder:text-zinc-500 focus:border-brand-purple/50 focus:outline-none focus:ring-2 focus:ring-brand-purple/30"
+          className="mt-1 flex min-h-[80px] w-full rounded-xl border border-border bg-input px-4 py-3 text-sm placeholder:text-muted-foreground focus:border-brand-purple/50 focus:outline-none focus:ring-2 focus:ring-brand-purple/30"
           value={description}
           onChange={(e) => setDescription(e.target.value)}
         />
@@ -222,15 +222,15 @@ export function AdminAirdropForm() {
           )}
           AI generate guide
         </Button>
-        {aiError && <p className="mt-2 text-xs text-rose-400">{aiError}</p>}
+        {aiError && <p className="mt-2 text-xs text-rose-500">{aiError}</p>}
       </div>
 
       {steps.length > 0 && (
         <div className="rounded-xl border border-emerald-500/30 bg-emerald-500/[0.04] p-3 text-xs">
-          <p className="font-medium text-emerald-300">
+          <p className="font-medium text-emerald-400">
             Generated {steps.length} step{steps.length === 1 ? "" : "s"} + blog body.
           </p>
-          <ol className="mt-2 list-decimal space-y-1 pl-5 text-zinc-300">
+          <ol className="mt-2 list-decimal space-y-1 pl-5 text-muted-foreground">
             {steps.map((s, i) => (
               <li key={i}>
                 <strong>{s.title}</strong> — {s.body}
@@ -248,7 +248,7 @@ export function AdminAirdropForm() {
         )}
         Save airdrop
       </Button>
-      {message && <p className="text-xs text-zinc-400">{message}</p>}
+      {message && <p className="text-xs text-muted-foreground">{message}</p>}
     </form>
   );
 }

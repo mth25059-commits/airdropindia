@@ -73,6 +73,16 @@ export type BlogPostRow = {
   updated_at: string;
 };
 
+export type ContactMessageRow = {
+  id: string;
+  name: string;
+  email: string;
+  subject: string | null;
+  message: string;
+  read: boolean;
+  created_at: string;
+};
+
 export interface Database {
   public: {
     Tables: {
@@ -95,6 +105,11 @@ export interface Database {
         Row: BlogPostRow;
         Insert: Partial<BlogPostRow> & Pick<BlogPostRow, "slug" | "title">;
         Update: Partial<BlogPostRow>;
+      };
+      contact_messages: {
+        Row: ContactMessageRow;
+        Insert: Partial<ContactMessageRow> & Pick<ContactMessageRow, "name" | "email" | "message">;
+        Update: Partial<ContactMessageRow>;
       };
     };
     Views: Record<string, never>;
