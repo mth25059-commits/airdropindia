@@ -3,7 +3,8 @@
 @tailwind utilities;
 
 @layer base {
-  :root {
+  :root,
+  .dark {
     --background: 0 0% 4%;
     --foreground: 0 0% 98%;
     --card: 0 0% 6%;
@@ -26,10 +27,49 @@
     --input: 0 0% 100% / 0.06;
     --ring: 263 70% 64%;
     --radius: 0.875rem;
+    --glass-bg: rgba(255, 255, 255, 0.06);
+    --glass-bg-strong: rgba(255, 255, 255, 0.08);
+    --glass-border: rgba(255, 255, 255, 0.08);
+    --glass-border-strong: rgba(255, 255, 255, 0.1);
+    --glass-highlight: rgba(255, 255, 255, 0.15);
   }
 
-  * {
+  .light {
+    --background: 0 0% 98%;
+    --foreground: 240 10% 10%;
+    --card: 0 0% 100%;
+    --card-foreground: 240 10% 10%;
+    --muted: 240 5% 92%;
+    --muted-foreground: 240 4% 46%;
+    --accent: 263 70% 54%;
+    --accent-foreground: 0 0% 100%;
+    --primary: 263 70% 54%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 217 91% 50%;
+    --secondary-foreground: 0 0% 100%;
+    --destructive: 0 84% 50%;
+    --destructive-foreground: 0 0% 100%;
+    --success: 160 84% 34%;
+    --success-foreground: 0 0% 100%;
+    --warning: 38 92% 45%;
+    --warning-foreground: 0 0% 100%;
+    --border: 240 6% 90%;
+    --input: 240 6% 90%;
+    --ring: 263 70% 54%;
+    --radius: 0.875rem;
+    --glass-bg: rgba(255, 255, 255, 0.7);
+    --glass-bg-strong: rgba(255, 255, 255, 0.85);
+    --glass-border: rgba(0, 0, 0, 0.08);
+    --glass-border-strong: rgba(0, 0, 0, 0.12);
+    --glass-highlight: rgba(255, 255, 255, 0.6);
+  }
+
+  .dark * {
     @apply border-white/10;
+  }
+
+  .light * {
+    border-color: hsl(var(--border));
   }
 
   html {
@@ -38,11 +78,12 @@
   }
 
   body {
-    @apply bg-background text-foreground font-sans antialiased;
-    background-color: #0a0a0a;
-    color: #fafafa;
+    @apply font-sans antialiased;
+    background-color: hsl(var(--background));
+    color: hsl(var(--foreground));
     font-feature-settings: "rlig" 1, "calt" 1, "ss01" 1;
     text-rendering: optimizeLegibility;
+    transition: background-color 0.3s ease, color 0.3s ease;
   }
 
   ::selection {
@@ -57,12 +98,19 @@
   ::-webkit-scrollbar-track {
     background: transparent;
   }
-  ::-webkit-scrollbar-thumb {
+  .dark ::-webkit-scrollbar-thumb {
     background: rgba(255, 255, 255, 0.08);
     border-radius: 999px;
   }
-  ::-webkit-scrollbar-thumb:hover {
+  .dark ::-webkit-scrollbar-thumb:hover {
     background: rgba(255, 255, 255, 0.16);
+  }
+  .light ::-webkit-scrollbar-thumb {
+    background: rgba(0, 0, 0, 0.12);
+    border-radius: 999px;
+  }
+  .light ::-webkit-scrollbar-thumb:hover {
+    background: rgba(0, 0, 0, 0.2);
   }
 }
 
@@ -70,33 +118,52 @@
   .glass {
     background: linear-gradient(
       180deg,
-      rgba(255, 255, 255, 0.06) 0%,
+      var(--glass-bg) 0%,
       rgba(255, 255, 255, 0.02) 100%
     );
     backdrop-filter: blur(16px) saturate(180%);
     -webkit-backdrop-filter: blur(16px) saturate(180%);
-    border: 1px solid rgba(255, 255, 255, 0.08);
+    border: 1px solid var(--glass-border);
+  }
+
+  .light .glass {
+    background: var(--glass-bg);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06), 0 0 0 1px var(--glass-border);
   }
 
   .glass-strong {
     background: linear-gradient(
       180deg,
-      rgba(255, 255, 255, 0.08) 0%,
+      var(--glass-bg-strong) 0%,
       rgba(255, 255, 255, 0.03) 100%
     );
     backdrop-filter: blur(24px) saturate(180%);
     -webkit-backdrop-filter: blur(24px) saturate(180%);
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    border: 1px solid var(--glass-border-strong);
+  }
+
+  .light .glass-strong {
+    background: var(--glass-bg-strong);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08), 0 0 0 1px var(--glass-border-strong);
   }
 
   .gradient-text {
-    background: linear-gradient(135deg, #c4b5fd 0%, #93c5fd 50%, #a78bfa 100%);
+    background: linear-gradient(135deg, #8b5cf6 0%, #3b82f6 50%, #7c3aed 100%);
     background-size: 200% 200%;
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
     color: transparent;
     animation: gradient-shift 8s ease infinite;
+  }
+
+  .dark .gradient-text {
+    background: linear-gradient(135deg, #c4b5fd 0%, #93c5fd 50%, #a78bfa 100%);
+    background-size: 200% 200%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
   }
 
   .gradient-border {

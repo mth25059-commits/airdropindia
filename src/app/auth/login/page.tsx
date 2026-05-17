@@ -27,7 +27,7 @@ export default function LoginPage({
         <h1 className="mt-5 text-2xl font-semibold tracking-tight">
           Welcome back
         </h1>
-        <p className="mt-2 text-sm text-zinc-400">
+        <p className="mt-2 text-sm text-muted-foreground">
           Sign in to save tax calculations and get airdrop alerts.
         </p>
 
@@ -42,7 +42,7 @@ export default function LoginPage({
           <LoginButtons redirectTo={redirectTo} />
         </div>
 
-        <p className="mt-6 text-sm text-zinc-400">
+        <p className="mt-6 text-sm text-muted-foreground">
           Don&apos;t have an account?{" "}
           <Link
             href={`/auth/signup${redirectTo !== "/" ? `?redirect=${encodeURIComponent(redirectTo)}` : ""}`}
@@ -52,7 +52,7 @@ export default function LoginPage({
           </Link>
         </p>
 
-        <p className="mt-4 text-xs text-zinc-500">
+        <p className="mt-4 text-xs text-muted-foreground">
           By signing in you agree to our{" "}
           <Link href="/terms" className="underline">
             Terms

@@ -32,7 +32,7 @@ export interface TaxExplainInput {
 }
 
 export async function explainTax(input: TaxExplainInput): Promise<string> {
-  const lang = input.language ?? "hinglish";
+  const lang = input.language ?? "en";
   const langInstruction =
     lang === "hinglish"
       ? "Reply in clear conversational Hinglish (Hindi-English mix in Roman script) like talking to a friend. Use rupee symbol ₹. Keep it under 180 words. Use 3 short paragraphs."

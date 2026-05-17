@@ -24,7 +24,7 @@ export function GlassCard({
       className={cn(
         intensity === "strong" ? "glass-strong" : "glass",
         "group relative overflow-hidden rounded-2xl shadow-card",
-        hover && "transition-colors hover:border-white/[0.14]",
+        hover && "transition-colors hover:border-[var(--glass-border-strong)]",
         className,
       )}
       {...props}

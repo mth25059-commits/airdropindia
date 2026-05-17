@@ -77,7 +77,7 @@ export default function HomePage() {
               </h1>
             </ScrollFade>
             <ScrollFade delay={0.1}>
-              <p className="mx-auto mt-5 max-w-2xl text-balance text-base text-zinc-400 sm:text-lg">
+              <p className="mx-auto mt-5 max-w-2xl text-balance text-base text-muted-foreground sm:text-lg">
                 {SITE.description}
               </p>
             </ScrollFade>
@@ -96,7 +96,7 @@ export default function HomePage() {
               </div>
             </ScrollFade>
             <ScrollFade delay={0.2}>
-              <p className="mt-4 text-xs text-zinc-500">
+              <p className="mt-4 text-xs text-muted-foreground">
                 No signup required. Calculator runs in your browser.
               </p>
             </ScrollFade>
@@ -110,7 +110,7 @@ export default function HomePage() {
                   <div className="text-xl font-semibold tracking-tight sm:text-2xl">
                     {s.value}
                   </div>
-                  <div className="mt-1 text-xs text-zinc-400">{s.label}</div>
+                  <div className="mt-1 text-xs text-muted-foreground">{s.label}</div>
                 </GlassCard>
               ))}
             </div>
@@ -129,11 +129,11 @@ export default function HomePage() {
               <h2 className="mt-4 text-2xl font-semibold tracking-tight sm:text-3xl">
                 Find airdrops worth your time.
               </h2>
-              <p className="mt-3 text-sm text-zinc-400 sm:text-base">
+              <p className="mt-3 text-sm text-muted-foreground sm:text-base">
                 Active airdrops on Ethereum, Solana, BNB, Polygon, Arbitrum &
                 Base. Search, filter, and follow the step-by-step claim guide.
               </p>
-              <ul className="mt-5 space-y-2 text-sm text-zinc-300">
+              <ul className="mt-5 space-y-2 text-sm">
                 <li className="flex items-center gap-2">
                   <Zap className="h-4 w-4 text-brand-glow" />
                   Filters: chain · difficulty · reward size · deadline
@@ -165,11 +165,11 @@ export default function HomePage() {
               <h2 className="mt-4 text-2xl font-semibold tracking-tight sm:text-3xl">
                 Calculate your 30% + 1% TDS — in seconds.
               </h2>
-              <p className="mt-3 text-sm text-zinc-400 sm:text-base">
+              <p className="mt-3 text-sm text-muted-foreground sm:text-base">
                 Section 115BBH & 194S coded exactly. 4% cess, optional
                 surcharge, AI explanation, downloadable PDF.
               </p>
-              <ul className="mt-5 space-y-2 text-sm text-zinc-300">
+              <ul className="mt-5 space-y-2 text-sm">
                 <li className="flex items-center gap-2">
                   <Zap className="h-4 w-4 text-brand-glow" />
                   30% flat + 4% cess (= 31.2%) auto-applied
@@ -203,7 +203,7 @@ export default function HomePage() {
               Everything you need.{" "}
               <span className="gradient-text">Nothing you don&apos;t.</span>
             </h2>
-            <p className="mt-3 text-zinc-400">
+            <p className="mt-3 text-muted-foreground">
               No ads, no popups, no upsell. We make money later — for now we
               just want this to be the best Indian crypto tool on the web.
             </p>
@@ -217,7 +217,7 @@ export default function HomePage() {
                   <f.icon className="h-5 w-5" />
                 </div>
                 <h3 className="mt-4 text-base font-semibold">{f.title}</h3>
-                <p className="mt-2 text-sm text-zinc-400">{f.desc}</p>
+                <p className="mt-2 text-sm text-muted-foreground">{f.desc}</p>
               </GlassCard>
             </ScrollFade>
           ))}
@@ -232,7 +232,7 @@ export default function HomePage() {
             <h2 className="text-2xl font-semibold tracking-tight sm:text-3xl">
               Start with whichever feels easier.
             </h2>
-            <p className="mx-auto mt-3 max-w-xl text-sm text-zinc-400 sm:text-base">
+            <p className="mx-auto mt-3 max-w-xl text-sm text-muted-foreground sm:text-base">
               Browse active airdrops or run a tax calculation in 10 seconds.
             </p>
             <div className="mt-6 flex flex-wrap items-center justify-center gap-3">

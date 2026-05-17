@@ -27,7 +27,7 @@ export default function SignupPage({
         <h1 className="mt-5 text-2xl font-semibold tracking-tight">
           Create your account
         </h1>
-        <p className="mt-2 text-sm text-zinc-400">
+        <p className="mt-2 text-sm text-muted-foreground">
           Sign up to track airdrops, calculate crypto tax, and get alerts.
         </p>
 
@@ -42,7 +42,7 @@ export default function SignupPage({
           <LoginButtons redirectTo={redirectTo} />
         </div>
 
-        <p className="mt-6 text-sm text-zinc-400">
+        <p className="mt-6 text-sm text-muted-foreground">
           Already have an account?{" "}
           <Link
             href={`/auth/login${redirectTo !== "/" ? `?redirect=${encodeURIComponent(redirectTo)}` : ""}`}
@@ -52,7 +52,7 @@ export default function SignupPage({
           </Link>
         </p>
 
-        <p className="mt-4 text-xs text-zinc-500">
+        <p className="mt-4 text-xs text-muted-foreground">
           By signing up you agree to our{" "}
           <Link href="/terms" className="underline">
             Terms
